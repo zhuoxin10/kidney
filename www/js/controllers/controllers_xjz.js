@@ -1791,7 +1791,7 @@ angular.module('xjz.controllers', ['ionic', 'kidney.services'])
         if ($scope.msgs.length == 0) return
         var lastMsg = $scope.msgs[$scope.msgs.length - 1]
         if (lastMsg.fromID == $scope.params.UID) return
-        return New.insertNews({ userId: $scope.params.UID, sendBy: lastMsg.targetID, type: $scope.params.newsType, readOrNot: 1 })
+        return New.insertNews({ userId: $scope.params.UID, sendBy: lastMsg.targetID, type: $scope.params.newsType, readOrNot: 1, caseType: $scope.params.teamId})
       }
     })
     imgModalInit()
@@ -1826,7 +1826,7 @@ angular.module('xjz.controllers', ['ionic', 'kidney.services'])
       $scope.$apply(function () {
         insertMsg(data.msg)
       })
-      New.insertNews({userId: $scope.params.UID, sendBy: $scope.params.groupId, type: $scope.params.newsType, readOrNot: 1})
+      New.insertNews({userId: $scope.params.UID, sendBy: $scope.params.groupId, type: $scope.params.newsType, readOrNot: 1, caseType: $scope.params.teamId})
     }
   })
   $scope.$on('im:messageRes', function (event, data) {
