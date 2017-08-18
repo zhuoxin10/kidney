@@ -1788,7 +1788,7 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
    * @return   patient.Name; patient.Photo
    */
   var getPatNamePhoto = function(sender,patient){
-    console.log(patient)
+    // console.log(patient)
     Patient.getPatientDetail({userId:sender}).then(function(data){
       if(data.results){
         if(data.results.photoUrl){
@@ -1856,10 +1856,10 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
   }
 
   // 病例讨论显示
-  // var getCaseNamePhoto = function(sender,case){
-  //   case.Name = '病例讨论';
-  //   case.Photo = 'img/DefaultAvatar.jpg';                                                
-  // }
+  var getCaseNamePhoto = function(sender,pcase){
+    pcase.Name = '病例讨论';
+    pcase.Photo = 'img/DefaultAvatar.jpg';                                                
+  }
 
   /**
    * [获取新消息]
