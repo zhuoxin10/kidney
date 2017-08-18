@@ -1856,10 +1856,10 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
   }
 
   // 病例讨论显示
-  var getCaseNamePhoto = function(sender,case){
-    case.Name = '病例讨论';
-    case.Photo = 'img/DefaultAvatar.jpg';                                                
-  }
+  // var getCaseNamePhoto = function(sender,case){
+  //   case.Name = '病例讨论';
+  //   case.Photo = 'img/DefaultAvatar.jpg';                                                
+  // }
 
   /**
    * [获取新消息]
@@ -1880,7 +1880,7 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
     //     }
     // );
 
-    //获取所有类别聊天消息 type=chat  分类别type11患者-医生  type12医生-医生  type13团队-医生
+    //获取所有类别聊天消息 type=chat  分类别type11患者-医生  type12医生-医生  type13团队消息 type15病例讨论
     New.getNewsByReadOrNot({userId:receiver,type:'chat',readOrNot:0,userRole:'doctor'}).then(function(data){
       //console.log(data.results)
       if(data.results.length){
