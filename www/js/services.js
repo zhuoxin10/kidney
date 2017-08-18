@@ -40,7 +40,7 @@ angular.module('kidney.services', ['ionic', 'ngResource'])
   }
 }])
 .constant('CONFIG', {
-  baseUrl: 'http://121.43.107.106:4050/api/v1/',
+  baseUrl: 'https://appserviceserver.haihonghospitalmanagement.com/api/v1/',
   mediaUrl: 'https://appmediaservice.haihonghospitalmanagement.com/',
   socketServer: 'https://appserviceserver.haihonghospitalmanagement.com/',
   imgThumbUrl: 'https://appmediaservice.haihonghospitalmanagement.com/uploads/photos/resize',
