@@ -1788,7 +1788,7 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
    * @return   patient.Name; patient.Photo
    */
   var getPatNamePhoto = function(sender,patient){
-    console.log(patient)
+    // console.log(patient)
     Patient.getPatientDetail({userId:sender}).then(function(data){
       if(data.results){
         if(data.results.photoUrl){
@@ -1855,6 +1855,12 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
     });
   }
 
+  // 病例讨论显示
+  var getCaseNamePhoto = function(sender,pcase){
+    pcase.Name = '病例讨论';
+    pcase.Photo = 'img/DefaultAvatar.jpg';                                                
+  }
+
   /**
    * [获取新消息]
    * @Author   ZY
@@ -1874,7 +1880,7 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
     //     }
     // );
 
-    //获取所有类别聊天消息 type=chat  分类别type11患者-医生  type12医生-医生  type13团队-医生
+    //获取所有类别聊天消息 type=chat  分类别type11患者-医生  type12医生-医生  type13团队消息 type15病例讨论
     New.getNewsByReadOrNot({userId:receiver,type:'chat',readOrNot:0,userRole:'doctor'}).then(function(data){
       //console.log(data.results)
       if(data.results.length){
@@ -1889,6 +1895,9 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
           if(data.results[i].type == 13){
               getTeamNamePhoto(data.results[i].sendBy,data.results[i]);                                                
           } 
+          if(data.results[i].type == 15){
+              getCaseNamePhoto(data.results[i].sendBy,data.results[i]);                                                
+          }           
         } 
         $scope.chats=data.results;
       }
@@ -1924,12 +1933,19 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
     $state.go("tab.detail",{chatId:Dchat.sendBy,type:2,consultId:'DoctorChat'});
   }
 
-  //团队-医生  获取交流状态 [status]：1进行中；0已完成  进入聊天：[type]:1=进行中;2=已结束;
+  //团队聊天
   getTChatDetail = function(Tchat) {
     var msg = JSON.parse(Tchat.url)
     var teamId = msg.teamId
     var groupId = msg.targetID
-    if(teamId == groupId) return $state.go("tab.group-chat",{type:0,teamId:teamId,groupId:groupId});
+    $state.go("tab.group-chat",{type:0,teamId:teamId,groupId:groupId});
+  }
+
+  //病例讨论  获取交流状态 [status]：1进行中；0已完成  进入聊天：[type]:1=进行中;2=已结束;
+  getCChatDetail = function(Cchat) {
+    var msg = JSON.parse(Cchat.url)
+    var teamId = msg.teamId
+    var groupId = msg.targetID
     Communication.getConsultation({consultationId:msg.targetID}).then(function(data){
       if(data.result.status==1){
           $state.go("tab.group-chat",{type:1,teamId:teamId,groupId:groupId});
@@ -1938,7 +1954,7 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
           $state.go("tab.group-chat",{type:2,teamId:teamId,groupId:groupId});
       }
     })
-  }
+  }  
 
   // 根据type进入不同聊天页面
   $scope.getChatDetail = function(chat){
@@ -1951,6 +1967,9 @@ angular.module('tdy.controllers', ['ionic','kidney.services','ionic-datepicker']
     }
     else if(chat.type==13){
         getTChatDetail(chat)
-    }        
+    }
+    else if(chat.type==15){
+        getCChatDetail(chat)
+    }          
   }
 }])
