@@ -1766,14 +1766,15 @@ angular.module('xjz.controllers', ['ionic', 'kidney.services'])
                 })
     } else if ($scope.params.type == '1') { // 进行中
       getConsultation()
-      $scope.params.newsType = $scope.params.teamId
+      // $scope.params.newsType = $scope.params.teamId
+      $scope.params.newsType = '15'
       $scope.params.hidePanel = true
       $scope.params.title = '病历'
       $scope.params.isDiscuss = true
     } else if ($scope.params.type == '2') { // 已处理
       getConsultation()
-
-      $scope.params.newsType = $scope.params.teamId
+      // $scope.params.newsType = $scope.params.teamId
+      $scope.params.newsType = '15'
       $scope.params.hidePanel = false
       $scope.params.title = '病历'
       $scope.params.isDiscuss = true

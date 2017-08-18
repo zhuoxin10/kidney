@@ -1274,7 +1274,7 @@ angular.module('zy.controllers', ['ionic', 'kidney.services'])
      * @return   data.results.length(有未读消息首页信箱标注小红点)
      */
     New.getNewsByReadOrNot({userId: Storage.get('UID'), readOrNot: 0, userRole: 'doctor'}).then(function (data) {
-      // console.log(data);
+      console.log(data)
       if (data.results.length) {
         $scope.hasUnreadMessages = true
         // console.log($scope.HasUnreadMessages);
