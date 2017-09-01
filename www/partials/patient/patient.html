@@ -45,7 +45,7 @@
                         </div> -->
                         <p style="position: absolute;">
                         <img ng-src="img/vip.png" style="width: 20px;height: 20px;position: relative;top: 5px" ng-if="p.patientId.VIP==1" alt="">
-                        <img ng-src="img/adr.png" style='width: 20px;height: 20px;position: relative;top: 5px' ng-if="p.labels[0].group==1" alt="">
+                        <img ng-src="img/adr.png" style='width: 20px;height: 20px;position: relative;top: 5px' ng-if="p.patientId.group==1" alt="">
                         <!-- <i class="y-message bg-ca" ng-if="p.labels[0].group==1">入组</i> -->
                         <i class="y-message bg-12" ng-if="p.patientId.class=='class_2'">CKD1-2期</i>
                         <i class="y-message bg-12" ng-if="p.patientId.class=='class_3'">CKD3-4期</i>
@@ -84,8 +84,8 @@
                         <span style="float: right">{{t.dpRelationTime |dateFormat:"YYYY-MM-DD"}}</span>
                         <p style="position: absolute;">
                         <img ng-src="img/vip.png" style="width: 20px;height: 20px;position: relative;top: 5px" ng-if="t.patientId.VIP==1" alt="">
-                        <img ng-src="img/adr.png" style='width: 20px;height: 20px;position: relative;top: 5px' ng-if="t.labels[0].group==1" alt="">
-                        <i class="y-message bg-ca" ng-if="t.labels[0].group==1">入组</i>
+                        <img ng-src="img/adr.png" style='width: 20px;height: 20px;position: relative;top: 5px' ng-if="t.patientId.group==1" alt="">
+                        <!-- <i class="y-message bg-ca" ng-if="t.labels[0].group==1">入组</i> -->
                         <i class="y-message bg-12" ng-if="t.patientId.class=='class_2'">CKD1-2期</i>
                         <i class="y-message bg-12" ng-if="t.patientId.class=='class_3'">CKD3-4期</i>
                         <i class="y-message bg-12" ng-if="t.patientId.class=='class_4'">CDK5期</i>
